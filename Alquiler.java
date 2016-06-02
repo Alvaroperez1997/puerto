@@ -23,7 +23,7 @@ public class Alquiler
         this.cliente = cliente;
         this.barco = barco;
     }
-    
+
     /**
      * 
      */
@@ -36,9 +36,12 @@ public class Alquiler
      */
     public String toString()
     {
-        String text = "Numero dias: " + numeroDias + ".\n";
-        text += "Cliente " + cliente.toString() + ".\n";
-        text += "Barco " + barco.toString() + ".\n";
-        return text;
+        String data = "- Cliente: \n";
+        data += cliente;
+        data += "- Barco: \n";
+        data += barco;
+        data += "Número de dias: " + numeroDias + "\n";
+        // data += "Coste del alquiler: " + getCosteAlquiler() + "\n";
+        return data;
     }
 }

@@ -39,6 +39,6 @@ public class Cliente
      * toString
      */
     public String toString(){
-        return nombre + "  " + dni;
+        return "Numbre: " + nombre + " / DNI: " + dni;
     }
 }

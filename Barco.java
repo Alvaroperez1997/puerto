@@ -29,30 +29,33 @@ public abstract class Barco
     {
         return matricula;
     }
-    
+
     /**
      * @return eslora
      */
     public float getEslora(){
         return eslora;
     }
-    
+
     /**
      * @return annoFabricacion
      */
     public int annoFabricacion(){
         return annoFabricacion();
     }
-    
+
     /**
      * 
      */
     public abstract int getCoeficienteBernua();
-    
+
     /**
      * toString
      */
     public String toString(){
-        return "Matricula: " + matricula + ". Eslora: " + eslora + ". Año de fabricacion: " + annoFabricacion;
+        String datos = "Matricula: " + matricula + "\n";
+        datos += "Eslora: " + eslora + "\n";
+        datos += "Año de fabricación: " + annoFabricacion + "\n";
+        return datos;
     }
 }

@@ -32,7 +32,7 @@ public class EmbarcacionDeportiva extends Barco
      */
     public String toString(){
         String text = super.toString();
-        text += ". Potencia: " + potencia;
+        text += "Potencia: " + potencia + "\n";
         return text;
     }
 }

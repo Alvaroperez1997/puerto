@@ -1,4 +1,4 @@
-
+import java.util.ArrayList;
 /**
  * Write a description of class Puerto here.
  * 
@@ -8,7 +8,7 @@
 public class Puerto
 {
     // instance variables - replace the example below with your own
-    private Alquiler[] alquileres;
+    private ArrayList<Alquiler> alquileres;
     private static final int NUMERO_AMARRES = 4;
 
     /**
@@ -16,7 +16,7 @@ public class Puerto
      */
     public Puerto()
     {
-        alquileres = new Alquiler[NUMERO_AMARRES];
+        alquileres = new ArrayList<>();
     }
 
     /**
@@ -26,26 +26,32 @@ public class Puerto
      */
     public int addAlquiler(int numeroDias, Cliente cliente, Barco barco)
     {
-        int amarre = -1;
-        boolean x = false;
-        for(int i = 0; i < NUMERO_AMARRES && !x; i++){
-            if(alquileres[i] == null){
-                alquileres[i] = new Alquiler(numeroDias, cliente, barco);
-                amarre = i;
-                x = true;
+        int posicionEnLaQueQuedaElBarco = -1;
+        int contador = 0;
+        while(contador<NUMERO_AMARRES && posicionEnLaQueQuedaElBarco==-1) {
+            if(alquileres.get(contador)==null){
+                posicionEnLaQueQuedaElBarco = contador;
+                alquileres.add(new Alquiler(numeroDias,cliente,barco));
             }
+            contador++;
         }
-        return amarre+1;
+        return posicionEnLaQueQuedaElBarco;
+
     }
 
     /**
      * Comprueba el precio de los alquileres
      */
     public void verEstado(){
-        for(int i = 0; i < NUMERO_AMARRES; i++){
-            if(alquileres[i] != null){
-                System.out.println("Alquiler del amarre " + (i+1) + " " + alquileres[i].getCosteAlquiler());
+        for(int i = 0;i <NUMERO_AMARRES;i++) {
+            System.out.println("Amarre nº" + i);
+            if(alquileres.get(i) == null) {
+                System.out.println("Libre");
             }
+            else{
+                System.out.println("ocupado");
+                System.out.println(alquileres.get(i));
+            }      
         }
     }
 
@@ -54,11 +60,13 @@ public class Puerto
      * elimina el alquiler
      */
     public float liquidarAlquiler(int posicion){
-        float precio = 0;
-        if(alquileres[posicion] != null){
-            precio = alquileres[posicion].getCosteAlquiler();
-            alquileres[posicion] = null;
+        float valor = -1;
+        if(posicion < NUMERO_AMARRES && posicion >= 0){
+            if(alquileres.get(posicion) != null){
+                valor = alquileres.get(posicion).getCosteAlquiler();
+                alquileres.remove(posicion);
+            }
         }
-        return precio;
+        return valor;
     }
 }

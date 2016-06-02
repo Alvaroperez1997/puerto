@@ -32,7 +32,7 @@ public class Yate extends EmbarcacionDeportiva
      */
     public String toString(){
         String text = super.toString();
-        text += ". Camarotes: " + camarotes;
+        text += "Camarotes: " + camarotes + "\n";
         return text;
     }
 }
